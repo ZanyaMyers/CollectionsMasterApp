@@ -188,14 +188,15 @@ namespace CollectionsMasterConsoleUI
 
         private static void ReverseArray(int[] array)
         {
-            int temp = 0; 
-            int lastIndex = array.Length - 1;
-            for (int i = 0; i < array.Length / 2; i++) 
+            int[] newArray = new int[array.Length];
+            int index = 0;
+            for (int i = array.Length; i>= 0;  i--) 
             {
-                temp = array[i];
-                array[i] = array[lastIndex - i];
-                array[lastIndex - i] = temp;
+                newArray[index] = array[i];
+                index++;
+
             }
+            NumberPrinter(newArray); 
         }
 
         /// <summary>
