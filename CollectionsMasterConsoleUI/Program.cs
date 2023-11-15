@@ -143,7 +143,6 @@ namespace CollectionsMasterConsoleUI
         private static void OddKiller(List<int> numberList)
         {
             numberList.RemoveAll(x => x % 2 != 0);
-            
         }
 
         private static void NumberChecker(List<int> numberList, int searchNumber)
@@ -169,7 +168,7 @@ namespace CollectionsMasterConsoleUI
         private static void Populater(List<int> numberList)
         {
             Random rng = new Random();
-            for (int i = 0; i < numberList.Count; i++)
+            for (int i = 0; i < 50; i++)
             {
                 numberList.Add(rng.Next());
             }
