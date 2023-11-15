@@ -189,7 +189,7 @@ namespace CollectionsMasterConsoleUI
         {
             int[] newArray = new int[array.Length];
             int index = 0;
-            for (int i = array.Length; i>= 0;  i--) 
+            for (int i = array.Length -1; i>= 0;  i--) 
             {
                 newArray[index] = array[i];
                 index++;
