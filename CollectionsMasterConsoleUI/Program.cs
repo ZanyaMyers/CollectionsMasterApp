@@ -48,8 +48,9 @@ namespace CollectionsMasterConsoleUI
             NumberPrinter(numbers); 
 
             Console.WriteLine("---------REVERSE CUSTOM------------");
+            
             ReverseArray(numbers);
-            NumberPrinter(numbers);
+            
             Console.WriteLine(""); 
 
 
@@ -58,7 +59,7 @@ namespace CollectionsMasterConsoleUI
             //TODO: Create a method that will set numbers that are a multiple of 3 to zero then print to the console all numbers
             Console.WriteLine("Multiple of three = 0: ");
             ThreeKiller(numbers);
-            NumberPrinter(numbers);
+            //NumberPrinter(numbers);
             Console.WriteLine("");
 
             Console.WriteLine("-------------------");
@@ -66,9 +67,12 @@ namespace CollectionsMasterConsoleUI
             //TODO: Sort the array in order now
             /*      Hint: Array.____()      */
             Console.WriteLine("Sorted numbers:");
+            
             Array.Sort(numbers);
             NumberPrinter(numbers);
-            
+
+
+
 
             Console.WriteLine("\n************End Arrays*************** \n");
             #endregion
@@ -95,9 +99,18 @@ namespace CollectionsMasterConsoleUI
 
             //TODO: Create a method that prints if a user number is present in the list
             //Remember: What if the user types "abc" accident your app should handle that!
-            Console.WriteLine("What number will you search for in the number list?");
-            int searchNumber = int.Parse(Console.ReadLine()); 
-            NumberChecker(list, searchNumber);
+            int userNumber;
+            bool isANumber;
+            do
+            {
+                Console.WriteLine("What number will you search for in the number list?");
+                isANumber = int.TryParse(Console.ReadLine(), out userNumber);
+            } while (isANumber == false);
+           
+           
+
+           
+            NumberChecker(list, userNumber);
             
             Console.WriteLine("-------------------");
 
@@ -108,9 +121,10 @@ namespace CollectionsMasterConsoleUI
 
 
             //TODO: Create a method that will remove all odd numbers from the list then print results
+           
             Console.WriteLine("Evens Only!!");
             OddKiller(list);
-            NumberPrinter(list);
+            
             
             Console.WriteLine("------------------");
 
@@ -138,6 +152,7 @@ namespace CollectionsMasterConsoleUI
                     numbers[i] = 0;
                 }
             }
+            NumberPrinter(numbers);
         }
 
         private static void OddKiller(List<int> numberList)
@@ -149,27 +164,22 @@ namespace CollectionsMasterConsoleUI
                     numberList.Remove(numberList[i]); 
                 }
             }
+            NumberPrinter(numberList);
            
         }
 
         private static void NumberChecker(List<int> numberList, int searchNumber)
         {
-            bool wasFound = false; 
-            for (int i = 0; i < numberList.Count; i++)
+         
+        if (numberList.Contains(searchNumber))
             {
-                if (numberList[i] == searchNumber)
-                {
-                    Console.WriteLine("The number has been found");
-                    wasFound = true;
-                    break;
-                }
+            Console.WriteLine("The number has been found");
+            }
+        else
+            {
+                Console.WriteLine($"It was not found");
+            }
                 
-            }
-            if (wasFound)
-            {
-                return;
-            }
-            Console.WriteLine("Number was not found"); 
         }
 
         private static void Populater(List<int> numberList)
@@ -194,15 +204,8 @@ namespace CollectionsMasterConsoleUI
 
         private static void ReverseArray(int[] array)
         {
-            int[] newArray = new int[array.Length];
-            int index = 0;
-            for (int i = array.Length -1; i>= 0;  i--) 
-            {
-                newArray[index] = array[i];
-                index++;
-
-            }
-            NumberPrinter(newArray); 
+            Array.Reverse(array);
+            NumberPrinter(array);
         }
 
         /// <summary>
